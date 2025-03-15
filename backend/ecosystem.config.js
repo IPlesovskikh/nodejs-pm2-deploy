@@ -12,7 +12,6 @@ module.exports = {
     {
       name: 'backend',
       script: './dist/app.js',
-      watch: '.',
     },
   ],
   deploy: {
@@ -20,11 +19,10 @@ module.exports = {
       user: DEPLOY_USER,
       host: DEPLOY_HOST,
       ref: DEPLOY_REF,
-      repo: 'https://github.com/IPlesovskikh/nodejs-pm2-deploy.git',
+      repo: 'git@github.com:IPlesovskikh/nodejs-pm2-deploy.git',
       path: DEPLOY_PATH,
-      'pre-deploy-local': `scp -Cr .env ${DEPLOY_USER}@${DEPLOY_HOST}:${DEPLOY_PATH}/current/backend`,
-      'post-deploy': 'cd backend && npm install && npm run build && pm2 startOrRestart ecosystem.config.js --env production',
-      'pre-setup': '',
+      'pre-deploy-local': `bash scripts/deployEnv.sh ${DEPLOY_USER}@${DEPLOY_HOST} ${DEPLOY_PATH}`,
+      'post-deploy': 'cd backend && pwd && npm ci && npm run build && pm2 startOrRestart ecosystem.config.js --env production',
     },
   },
 };
