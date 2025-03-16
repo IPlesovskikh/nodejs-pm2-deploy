@@ -5,22 +5,17 @@ const {
   DEPLOY_USER,
   DEPLOY_HOST,
   DEPLOY_PATH,
-  DEPLOY_REF = 'origin/master',
+  DEPLOY_REF,
+  DEPLOY_REPOSITORY,
 } = process.env;
 
 module.exports = {
-  apps: [
-    {
-      name: "frontend",
-      script: "./build/index.html",
-    },
-  ],
   deploy: {
     production: {
       user: DEPLOY_USER,
       host: DEPLOY_HOST,
       ref: DEPLOY_REF,
-      repo: "git@github.com:IPlesovskikh/nodejs-pm2-deploy.git",
+      repo: DEPLOY_REPOSITORY,
       path: DEPLOY_PATH,
       'post-deploy': 'cd frontend && pwd && npm ci && npm run build',
     },
