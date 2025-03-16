@@ -2,5 +2,5 @@
 
 IP адрес 158.160.77.188
 
-Frontend https://igplesovskikh.students.nomorepartiesco.ru
-Backend https://api.igplesovskikh.students.nomorepartiesco.ru
+Frontend https://iplesovskikh.students.nomorepartiesco.ru
+Backend https://api.iplesovskikh.students.nomorepartiesco.ru
